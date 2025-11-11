@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        .box {
+            width: 350px;
+            margin: auto;
+            padding: 25px;
+            background: #222;
+            border-radius: 12px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin: 15px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #0f9d58;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #qrImage {
+            margin-top: 20px;
+            display: none;
+            width: 200px;
+        }
+    </style>
+</head>
+<body> <!-- just my watermark lol-->
+<div style="
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: rgb(16, 13, 202);
+    font-size: 14px;
+    opacity: 0.7;
+">
+    sai
+</div>
+
+<div class="box">
+    <h2>QR Code Generator</h2>
+
+    <input id="url" type="text" placeholder="Enter URL">
+    <button onclick="generateQR()">Generate</button>
+
+    <img id="qrImage" alt="QR Code">
+</div>
+
+<script>
+    function generateQR() {
+        const url = document.getElementById("url").value;
+        if (!url.trim()) return alert("Enter a valid URL!");
+
+        const qr = "/generate_qr?data=" + encodeURIComponent(url);
+        const img = document.getElementById("qrImage");
+
+        img.src = qr;
+        img.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
